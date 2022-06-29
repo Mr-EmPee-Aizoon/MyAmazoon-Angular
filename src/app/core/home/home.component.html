@@ -1,0 +1,40 @@
+<app-header></app-header>
+<main>
+    <aside>
+        <ul>
+        <li>
+            <span class="active" (click)="currentCategory = null">Tutte le categorie</span>
+            <ul>
+                <li *ngFor="let category of categories" (click)="currentCategory = category"><span>{{ category }}</span></li>
+            </ul>
+        </li>
+        </ul>
+    </aside>
+    <div class="vertical-separator"></div>
+    <section>
+
+        <div *ngFor="let product of products" class="card">
+            <div style="background-image: url('../../../assets/images/products/laptop.png')" class="card-head"></div>
+            <div class="card-body">
+                <h5 class="card-title"> {{ product.title }} </h5>
+                <p class="card-text">{{ product.description }}</p>
+                <div class="card-text align-self-end">
+                    <span class="card-price">{{ product.price }} €</span>
+
+                    <div>
+                        <span *ngIf="!cartContainsProduct(product.id)">
+                            <button (click)="addProductToCart(product.id)" class="btn btn-success">Add to cart</button>
+                        </span>
+                        <span *ngIf="cartContainsProduct(product.id)">
+                            <button (click)="addProductToCart(product.id)" class="btn btn-warning">
+                                Total: {{ cartContainsProduct(product.id)?.quantity }}
+                            </button>
+                        </span>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+    </section>
+</main>

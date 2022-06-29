@@ -1,0 +1,90 @@
+main {
+    display: flex;
+
+    width: 100%;
+    min-height: 90vh;
+
+    box-sizing: border-box;
+    padding-top: 5vh;
+    padding-right: 2%;
+
+}
+
+aside {
+    max-width: 13em;
+    width: 30%;
+
+    padding-top: 2rem;
+    padding-right: 2rem;
+
+    color: white;
+    background-color: rgb(107, 172, 150);
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 1em;
+}
+ 
+aside span {
+    cursor: pointer;
+}
+
+aside span.active {
+    font-weight: bold;
+}
+
+aside span:not(.active):hover:before {
+     content: "▸ ";
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 100%;
+
+
+    border-top-right-radius: 5rem;
+    padding-top: 2em;
+
+    background-color: white;
+}
+
+.card {
+    flex: 1 1 auto;
+
+    margin: 1.5em;
+    padding: 1em;
+}
+
+.card .card-head {
+    flex: 1 1 auto;
+    min-height: 15vh;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+
+.card .card-body {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.card-text .card-price {
+    padding-right: 1rem;
+}
+
+.card-price {
+    font-weight: bold;
+}
+
+.vertical-separator {
+    z-index: 100;
+    box-shadow: -1px 1px 9px 1px black;
+}
