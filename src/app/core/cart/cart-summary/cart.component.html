@@ -1,5 +1,8 @@
-<div class="cart p-4">
+<div class="cart text-center">
     <i routerLink="/cart" class="fa fa-shopping-cart fa-2x" aria-hidden="true">
         <sup>{{ productsCount }}</sup>
     </i>
+    <div class="w-100 font-weight-bold">
+        Total: <span>{{ totalPrice | number:'0.2-2' }}</span> €
+    </div>
 </div>

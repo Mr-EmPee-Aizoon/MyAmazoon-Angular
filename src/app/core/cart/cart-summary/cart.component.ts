@@ -10,12 +10,14 @@ export class CartComponent {
 
   constructor(private cartManager:CartManagerService) { }
 
-  private getCart() {
-    return this.cartManager.getCart("default");
-  }
+  private cart = this.cartManager.getCart("default");
 
   get productsCount() {
-    return this.getCart().getTotalProducts();
+    return this.cart.getTotalProducts();
+  }
+
+  get totalPrice() {
+    return this.cart.getTotalPrice();
   }
 
 }
