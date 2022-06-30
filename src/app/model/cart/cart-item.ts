@@ -11,7 +11,7 @@ export class CartItem {
         public quantity:number
     ) {
         this.id = product.id;
-        this.title = product.title? product.title : "unkown product";
+        this.title = product.title;
         this.price = product.price ? product.price : 0;
     }
 

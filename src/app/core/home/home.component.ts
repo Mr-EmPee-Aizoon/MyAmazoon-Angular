@@ -10,7 +10,8 @@ import { ProductRepositoryService } from 'src/app/model/repo/product-repository.
 })
 export class HomeComponent {
 
-  public currentCategory:null|string = null;
+  public products = this.productRepo.getProducts();
+
   private cart:Cart;
 
   constructor(
@@ -20,20 +21,16 @@ export class HomeComponent {
     this.cart = cartManager.getCart("default")
   }
 
-  get products() {
-    if(this.currentCategory == null) {
-      return this.productRepo.getProducts();
+  refreshProductsList(category?:string) {
+    if(category == undefined) {
+      this.products = this.productRepo.getProducts();
     } else {
-      return this.productRepo.getProductsByCategory(this.currentCategory);
+      this.products = this.productRepo.getProductsByCategory(category);
     }
   }
 
   get categories() {
     return this.productRepo.getCategories();
-  }
-
-  getProductsByCategory(category:string) {
-    return this.productRepo.getProductsByCategory(category);
   }
 
   addProductToCart(productID:number) {

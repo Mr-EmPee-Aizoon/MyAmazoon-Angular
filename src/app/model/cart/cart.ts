@@ -4,6 +4,8 @@ import { CartItem } from "./cart-item";
 export class Cart {
 
     private items:CartItem[] = [];
+    private totalProducts = 0;
+    private totalPrice = 0;
 
     constructor(
         private cartToken:string
@@ -21,6 +23,10 @@ export class Cart {
         return this.cartToken;
     }
 
+    reset() {
+        this.items = [];
+    }
+
     addProduct(product:Product) {
         let item = this.containsItem(product.id);
         if(item == undefined) {
@@ -28,6 +34,9 @@ export class Cart {
         } else {
             item.quantity += 1;
         }
+
+        this.totalProducts += 1;
+        this.totalPrice += product.price;
     }
 
     removeProduct(product:Product) {
@@ -41,17 +50,42 @@ export class Cart {
             } else {
                 item.quantity -= 1;
             }
+
+            this.totalProducts -= 1;
+            this.totalPrice -= product.price;
         }
     }
 
-    removeItem(product:Product) {
-        let item = this.containsItem(product.id);
-        if(item) {
-            this.items.splice(
-                this.items.indexOf(item),
-                1
-            );
+    updateItemQuantity(item:CartItem, quantity:number) {
+        let difference=quantity-item.quantity;
+        item.quantity += difference;
+
+        if(difference>0) {
+            this.totalProducts += difference;
+            this.totalPrice += difference*item.price;
+        } else {
+            difference = -difference;
+            if(item.quantity <= 0) {
+                this.items.splice(
+                    this.items.indexOf(item),
+                    1
+                );
+                this.totalProducts -= item.quantity;
+            } else {
+                this.totalProducts -= difference;
+                this.totalPrice -= difference*item.price;
+            }
         }
+    }
+
+    removeItem(item:CartItem) {
+        this.items.splice(
+            this.items.indexOf(item),
+            1
+        );
+
+        this.totalProducts -= item.quantity;
+        this.totalPrice -= item.quantity*item.price;
     }
 
     getItems() {
@@ -59,23 +93,11 @@ export class Cart {
     }
 
     getTotalProducts() {
-        if(this.items.length == 0) {
-            return 0;
-        }
-
-        return this.items
-            .map( (item) => item.quantity < 0 ? 0 : item.quantity )
-            .reduce( (q1, q2) => q1+q2);
+        return this.totalProducts;
     }
 
     getTotalPrice() {
-        if(this.items.length == 0) {
-            return 0;
-        }
-
-        return this.items
-            .map( (item) => item.getTotalPrice() )
-            .reduce( (p1, p2) => p1 + p2 );
+        return this.totalPrice;
     }
 
 }

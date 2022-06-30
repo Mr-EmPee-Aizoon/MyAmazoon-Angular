@@ -17,7 +17,7 @@
                 <tbody>
                     <tr *ngFor="let item of items">
                         <td>
-                            <input class="form-control text-center" type="number" min="1" max="99" [(ngModel)]="item.quantity">
+                            <input #quantity class="form-control text-center" type="number" min="1" max="99" (click)="updateItemQuantity(item, quantity)" [value]="item.quantity">
                         </td>
     
                         <td>{{ item.title }}</td>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart } from 'src/app/model/cart/cart';
+import { CartItem } from 'src/app/model/cart/cart-item';
 import { CartManagerService } from 'src/app/model/cart/cart-manager.service';
 
 @Component({
@@ -17,6 +18,17 @@ export class CartDetailsComponent {
 
   get items() {
     return this.cart.getItems();
+  }
+
+  updateItemQuantity(item:CartItem, quantityInput:HTMLInputElement) {
+    let newQuantity = Number(quantityInput.value);
+
+    if(newQuantity <= 0) {
+      this.cart.removeItem(item);
+    } else {
+      this.cart.updateItemQuantity(item,  newQuantity);
+    }
+
   }
 
   removeItem(productID:number) {
