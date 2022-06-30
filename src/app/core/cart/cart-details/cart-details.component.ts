@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Cart } from 'src/app/model/cart/cart';
 import { CartManagerService } from 'src/app/model/cart/cart-manager.service';
 
 @Component({
@@ -8,11 +9,11 @@ import { CartManagerService } from 'src/app/model/cart/cart-manager.service';
 })
 export class CartDetailsComponent {
 
-  private cart = this.cartManager.getCart("default");
+  private cart:Cart;
 
-  constructor(
-    private cartManager:CartManagerService
-  ) { }
+  constructor(cartManager:CartManagerService) {
+    this.cart = cartManager.getCart("default");
+  }
 
   get items() {
     return this.cart.getItems();

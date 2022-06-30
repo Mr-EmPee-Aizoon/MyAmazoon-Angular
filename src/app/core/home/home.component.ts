@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Cart } from 'src/app/model/cart/cart';
 import { CartManagerService } from 'src/app/model/cart/cart-manager.service';
 import { ProductRepositoryService } from 'src/app/model/repo/product-repository.service';
 
@@ -10,12 +11,14 @@ import { ProductRepositoryService } from 'src/app/model/repo/product-repository.
 export class HomeComponent {
 
   public currentCategory:null|string = null;
-  private cart = this.cartManager.getCart("default");
+  private cart:Cart;
 
   constructor(
     private productRepo:ProductRepositoryService,
-    private cartManager:CartManagerService
-  ) {}
+    cartManager:CartManagerService
+  ) {
+    this.cart = cartManager.getCart("default")
+  }
 
   get products() {
     if(this.currentCategory == null) {
