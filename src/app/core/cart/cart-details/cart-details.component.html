@@ -1,1 +1,56 @@
-<p>cart-details works!</p>
+<div class="d-flex w-100 h-100 justify-content-center p-5">
+    <div class="w-50 bg-white shadow">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" class="col-1">Quantity</th>
+                    <th scope="col" class="col-5">Product</th>
+                    <th scope="col" class="col-2">Price</th>
+                    <th scope="col" class="col-2">Subtotal</th>
+                    <th scope="col" class="col-2"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items">
+                    <td>
+                        <input class="form-control text-center" type="number" min="1" [(ngModel)]="item.quantity">
+                    </td>
+
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.price }} €</td>
+                    <td>{{ item.price * item.quantity | number:'0.2-2' }} €</td>
+                    <td>
+                        <button class="btn btn-danger" (click)="removeItem(item.id)">Remove</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div *ngIf="items.length > 0" class="btn-group">
+            <button routerLink="/home" class="btn btn-primary">
+                Continue Shopping
+            </button>
+
+            <button routerLink="/checkout" class="btn btn-success">
+                Checkout
+            </button>
+        </div>
+
+        <div *ngIf="items.length <= 0">
+            <div class="container-fluid text-center font-weight-bold">
+                The cart is empty
+            </div>
+
+            <div class="btn-group">
+                <button routerLink="/home" class="btn btn-primary">
+                    Continue Shopping
+                </button>
+    
+                <button class="btn btn-success" disabled>
+                    Checkout
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>

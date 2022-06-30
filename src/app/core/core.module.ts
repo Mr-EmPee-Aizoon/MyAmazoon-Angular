@@ -7,6 +7,7 @@ import { CartComponent } from './cart/cart-summary/cart.component';
 import { CartDetailsComponent } from './cart/cart-details/cart-details.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -21,6 +22,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     ModelModule,
+    FormsModule,
     RouterModule
   ]
 })
