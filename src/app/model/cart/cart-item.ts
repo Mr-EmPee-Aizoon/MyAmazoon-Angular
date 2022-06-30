@@ -16,6 +16,10 @@ export class CartItem {
     }
 
     getTotalPrice() {
+        if(this.quantity <= 0) {
+            return 0;
+        }
+        
         return this.quantity * this.price;
     }
 

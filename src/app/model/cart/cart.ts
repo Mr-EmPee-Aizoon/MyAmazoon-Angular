@@ -64,7 +64,7 @@ export class Cart {
         }
 
         return this.items
-            .map( (item) => item.quantity)
+            .map( (item) => item.quantity < 0 ? 0 : item.quantity )
             .reduce( (q1, q2) => q1+q2);
     }
 
@@ -74,7 +74,7 @@ export class Cart {
         }
 
         return this.items
-            .map( (item) => item.price ? item.price * item.quantity : 0 )
+            .map( (item) => item.getTotalPrice() )
             .reduce( (p1, p2) => p1 + p2 );
     }
 
