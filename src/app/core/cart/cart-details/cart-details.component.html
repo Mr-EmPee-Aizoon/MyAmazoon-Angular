@@ -1,44 +1,48 @@
-<div class="d-flex w-100 h-100 justify-content-center p-5">
-    <div class="w-50 bg-white shadow">
-        <table class="table table-striped">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col" class="col-1">Quantity</th>
-                    <th scope="col" class="col-5">Product</th>
-                    <th scope="col" class="col-2">Price</th>
-                    <th scope="col" class="col-2">Subtotal</th>
-                    <th scope="col" class="col-2"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of items">
-                    <td>
-                        <input class="form-control text-center" type="number" min="1" max="99" [(ngModel)]="item.quantity">
-                    </td>
+<app-header></app-header>
 
-                    <td>{{ item.title }}</td>
-                    <td>{{ item.price }} €</td>
-                    <td>{{ item.getTotalPrice() | number:'0.2-2' }} €</td>
-                    <td>
-                        <button class="btn btn-danger" (click)="removeItem(item.id)">Remove</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-right" colspan="3">Totale:</td>
-                    <td colspan="2">{{ totalPrice | number:'0.2-2' }} €</td>
-                </tr>
-                <tr>
-                    <td class="text-right" colspan="3">Numero prodotti:</td>
-                    <td colspan="2">{{ totalProduct }}</td>
-                </tr>
-                <tr>
-                    <td class="text-right" colspan="3">Numero articoli:</td>
-                    <td colspan="2">{{ totalItems }}</td>
-                </tr>
-            </tbody>
-        </table>
+<div class="cart-container">
+    <div class="w-50 bg-white shadow">
 
         <div *ngIf="items.length > 0">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" class="col-1">Quantity</th>
+                        <th scope="col" class="col-5">Product</th>
+                        <th scope="col" class="col-2">Price</th>
+                        <th scope="col" class="col-2">Subtotal</th>
+                        <th scope="col" class="col-2"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of items">
+                        <td>
+                            <input class="form-control text-center" type="number" min="1" max="99" [(ngModel)]="item.quantity">
+                        </td>
+    
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.price | currency:'EUR' }}</td>
+                        <td>{{ item.getTotalPrice() | currency:'EUR' }}</td>
+                        <td>
+                            <button class="btn btn-danger" (click)="removeItem(item.id)">Remove</button>
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+                    <tr>
+                        <td class="text-right font-weight-bold" colspan="3">Totale:</td>
+                        <td colspan="2">{{ totalPrice | currency:'EUR' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right font-weight-bold" colspan="3">Numero prodotti:</td>
+                        <td colspan="2">{{ totalProduct }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-right font-weight-bold" colspan="3">Numero articoli:</td>
+                        <td colspan="2">{{ totalItems }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
             <div class="btn-group">
                 <button routerLink="/home" class="btn btn-primary">
                     Continue Shopping
@@ -51,6 +55,9 @@
         </div>
 
         <div *ngIf="items.length <= 0">
+            <div class="w-100 p-5 font-weight-bold text-center">
+                (cart empty)
+            </div>
             <div class="btn-group">
                 <button routerLink="/home" class="btn btn-primary">
                     Continue Shopping
