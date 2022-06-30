@@ -13,34 +13,44 @@
             <tbody>
                 <tr *ngFor="let item of items">
                     <td>
-                        <input class="form-control text-center" type="number" min="1" [(ngModel)]="item.quantity">
+                        <input class="form-control text-center" type="number" min="1" max="99" [(ngModel)]="item.quantity">
                     </td>
 
                     <td>{{ item.title }}</td>
                     <td>{{ item.price }} €</td>
-                    <td>{{ item.price * item.quantity | number:'0.2-2' }} €</td>
+                    <td>{{ item.getTotalPrice() | number:'0.2-2' }} €</td>
                     <td>
                         <button class="btn btn-danger" (click)="removeItem(item.id)">Remove</button>
                     </td>
                 </tr>
+                <tr>
+                    <td class="text-right" colspan="3">Totale:</td>
+                    <td colspan="2">{{ totalPrice | number:'0.2-2' }} €</td>
+                </tr>
+                <tr>
+                    <td class="text-right" colspan="3">Numero prodotti:</td>
+                    <td colspan="2">{{ totalProduct }}</td>
+                </tr>
+                <tr>
+                    <td class="text-right" colspan="3">Numero articoli:</td>
+                    <td colspan="2">{{ totalItems }}</td>
+                </tr>
             </tbody>
         </table>
 
-        <div *ngIf="items.length > 0" class="btn-group">
-            <button routerLink="/home" class="btn btn-primary">
-                Continue Shopping
-            </button>
-
-            <button routerLink="/checkout" class="btn btn-success">
-                Checkout
-            </button>
+        <div *ngIf="items.length > 0">
+            <div class="btn-group">
+                <button routerLink="/home" class="btn btn-primary">
+                    Continue Shopping
+                </button>
+    
+                <button routerLink="/checkout" class="btn btn-success">
+                    Checkout
+                </button>
+            </div>
         </div>
 
         <div *ngIf="items.length <= 0">
-            <div class="container-fluid text-center font-weight-bold">
-                The cart is empty
-            </div>
-
             <div class="btn-group">
                 <button routerLink="/home" class="btn btn-primary">
                     Continue Shopping

@@ -25,4 +25,16 @@ export class CartDetailsComponent {
     }
   }
 
+  get totalPrice() {
+    return this.cart.getTotalPrice();
+  }
+
+  get totalItems() {
+    return this.cart.getItems().length;
+  }
+
+  get totalProduct() {
+    return this.cart.getTotalProducts();
+  }
+
 }
