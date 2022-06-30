@@ -1,1 +1,46 @@
-<p>checkout works!</p>
+<app-header></app-header>
+
+<div class="form-container">
+    <div class="w-50 bg-white shadow">
+
+        <div class="p-5">
+            <form *ngIf="!sent" #form="ngForm" (ngSubmit)="sendOrder(form)">
+                {{ order | json }}
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label for="name">Name</label>
+                        <input #name="ngModel" [(ngModel)]="order.name" type="text" class="form-control" id="name" name="name"
+                            aria-describedby="nameHelp" placeholder="Enter your name"
+                            minlength="2" pattern="[A-Za-z ]+$" required >
+                    </div>
+    
+                    <div class="form-group col-6">
+                        <label for="surname">Surname</label>
+                        <input #surname="ngModel" [(ngModel)]="order.surname" type="text" class="form-control" id="surname" name="surname" aria-describedby="surnameHelp" placeholder="Enter your surname">
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="form-group col-2">
+                        <label for="city">CAP</label>
+                        <input #city="ngModel" [(ngModel)]="order.city" type="text" class="form-control" id="city" name="city" aria-describedby="cityHelp" placeholder="00000">
+                    </div>
+                    <div class="col-10 form-group">
+                        <label for="address">Address</label>
+                        <input #address="ngModel" [(ngModel)]="order.address" type="address" class="form-control" id="address" name="address" aria-describedby="addressHelp" placeholder="Enter your address">
+                    </div>
+                </div>
+    
+    
+                <button type="submit" class="mt-4 btn btn-success w-100">Place order</button>
+    
+            </form>
+    
+            <div *ngIf="sent">
+                <p class="text-center">Yey! Order sent correctly, check your inbox.</p>
+                <button routerLink="/home" class="mt-4 btn btn-success w-100">Return to home</button>
+            </div>
+        </div>
+
+    </div>
+</div>
