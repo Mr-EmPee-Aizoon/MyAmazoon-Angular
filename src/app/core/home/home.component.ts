@@ -42,13 +42,13 @@ export class HomeComponent {
 
   removeProductFromCart(productID:number) {
     let product = this.productRepo.getProductByID(productID);
-    if(product != undefined) {
+    if(product) {
       this.cart.removeProduct(product)
     }
   }
 
   cartContainsProduct(prodID:number) {
-    return this.cart.containsProduct(prodID);
+    return this.cart.containsItem(prodID);
   }
 
 }
