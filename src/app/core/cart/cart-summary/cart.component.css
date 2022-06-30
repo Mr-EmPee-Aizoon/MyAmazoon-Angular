@@ -1,3 +1,10 @@
 .cart {
     cursor: pointer;
 }
+
+.text-price {
+    width: 100%;
+    font-weight: bold;
+
+    font-size: 80%;
+}
