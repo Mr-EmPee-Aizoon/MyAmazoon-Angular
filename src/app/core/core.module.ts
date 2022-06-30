@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { ModelModule } from '../model/model.module';
 import { HeaderComponent } from './header/header.component';
-import { CartComponent } from './cart/cart-summary/cart.component';
+import { CartSummaryComponent } from './cart/cart-summary/cart-summary.component';
 import { CartDetailsComponent } from './cart/cart-details/cart-details.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { RouterModule } from '@angular/router';
@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     HomeComponent,
     HeaderComponent,
-    CartComponent,
+    CartSummaryComponent,
     CartDetailsComponent,
     CheckoutComponent
   ],
