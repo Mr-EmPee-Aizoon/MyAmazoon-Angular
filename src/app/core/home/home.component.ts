@@ -10,6 +10,7 @@ import { ProductRepositoryService } from 'src/app/model/repo/product-repository.
 export class HomeComponent {
 
   public currentCategory:null|string = null;
+  private cart = this.cartManager.getCart("default");
 
   constructor(
     private productRepo:ProductRepositoryService,
@@ -32,19 +33,22 @@ export class HomeComponent {
     return this.productRepo.getProductsByCategory(category);
   }
 
-  private getCart() {
-    return this.cartManager.getCart("default");
-  }
-
   addProductToCart(productID:number) {
     let product = this.productRepo.getProductByID(productID);
     if(product != undefined) {
-      this.getCart().addProduct(product);
+      this.cart.addProduct(product);
+    }
+  }
+
+  removeProductFromCart(productID:number) {
+    let product = this.productRepo.getProductByID(productID);
+    if(product != undefined) {
+      this.cart.removeProduct(product)
     }
   }
 
   cartContainsProduct(prodID:number) {
-    return this.getCart().containsProduct(prodID);
+    return this.cart.containsProduct(prodID);
   }
 
 }

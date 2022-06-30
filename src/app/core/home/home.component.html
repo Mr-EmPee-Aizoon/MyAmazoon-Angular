@@ -26,9 +26,14 @@
                             <button (click)="addProductToCart(product.id)" class="btn btn-success">Add to cart</button>
                         </span>
                         <span *ngIf="cartContainsProduct(product.id)">
-                            <button (click)="addProductToCart(product.id)" class="btn btn-warning">
-                                Total: {{ cartContainsProduct(product.id)?.quantity }}
-                            </button>
+                            <div class="btn-group">
+                                <button (click)="addProductToCart(product.id)" class="btn btn-warning">
+                                    Total: {{ cartContainsProduct(product.id)?.quantity }}
+                                </button>
+                                <button (click)="removeProductFromCart(product.id)" class="btn btn-danger">
+                                    -
+                                </button>
+                            </div>
                         </span>
                     </div>
                     

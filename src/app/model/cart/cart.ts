@@ -30,6 +30,20 @@ export class Cart {
         }
     }
 
+    removeProduct(product:Product) {
+        let item = this.containsProduct(product.id);
+        if(item != null) {
+            if(item.quantity == 1) {
+                this.products.splice(
+                    this.products.indexOf(item),
+                    1
+                );
+            } else {
+                item.quantity -= 1;
+            }
+        }
+    }
+
     getProducts() {
         return Array.from(this.products);
     }
@@ -40,13 +54,17 @@ export class Cart {
         }
 
         return this.products
-            .map( (product) => product.quantity)
+            .map( (item) => item.quantity)
             .reduce( (q1, q2) => q1+q2);
     }
 
     getTotalPrice() {
+        if(this.products.length == 0) {
+            return 0;
+        }
+
         return this.products
-            .map( (product) => product.price ? product.price : 0 )
+            .map( (item) => item.price ? item.price * item.quantity : 0 )
             .reduce( (p1, p2) => p1 + p2 );
     }
 
