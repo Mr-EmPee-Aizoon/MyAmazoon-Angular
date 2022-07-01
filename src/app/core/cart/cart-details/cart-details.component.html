@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <div class="cart-container">
-    <div class="w-50 bg-white shadow">
+    <div class="w-50 bg-white shadow" style="border-radius: 2em;">
 
         <div *ngIf="items.length > 0">
             <table class="table table-striped">
@@ -17,7 +17,7 @@
                 <tbody>
                     <tr *ngFor="let item of items">
                         <td>
-                            <input #quantity class="form-control text-center" type="number" min="1" max="99" (click)="updateItemQuantity(item, quantity)" [value]="item.quantity">
+                            <input #quantity class="form-control text-center" type="number" min="0" max="99" (click)="updateItemQuantity(item, quantity)" [value]="item.quantity">
                         </td>
     
                         <td>{{ item.title }}</td>
