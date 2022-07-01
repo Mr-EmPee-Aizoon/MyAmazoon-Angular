@@ -1,0 +1,65 @@
+{
+  "products": [
+    {
+      "id": 2,
+      "title": "Inspiron 2000",
+      "description": "2 in 1, 16 GB RAM   256 GB SSD",
+      "category": "LAPTOP",
+      "price": 999.99
+    }
+  ],
+  "orders": [
+    {
+      "cart": {
+        "cartToken": "default",
+        "items": [
+          {
+            "product": {
+              "id": 2,
+              "title": "Inspiron 2000",
+              "description": "2 in 1, 16 GB RAM   256 GB SSD",
+              "category": "LAPTOP",
+              "price": 999.99
+            },
+            "quantity": 1,
+            "id": 2,
+            "title": "Inspiron 2000",
+            "price": 999.99
+          }
+        ],
+        "totalProducts": 1,
+        "totalPrice": 999.99
+      },
+      "name": "ewfewf",
+      "surname": "wefwef",
+      "city": "ewfwef",
+      "address": "wefwfe",
+      "id": 1
+    },
+    {
+      "cart": {
+        "cartToken": "default",
+        "items": [
+          {
+            "product": {
+              "id": 2,
+              "title": "Inspiron 2000",
+              "description": "2 in 1, 16 GB RAM   256 GB SSD",
+              "category": "LAPTOP",
+              "price": 999.99
+            },
+            "quantity": 1,
+            "id": 2,
+            "title": "Inspiron 2000",
+            "price": 999.99
+          }
+        ],
+        "totalProducts": 1,
+        "totalPrice": 999.99
+      },
+      "name": "ManuelP",
+      "surname": "dc",
+      "id": 2
+    }
+  ]
+}

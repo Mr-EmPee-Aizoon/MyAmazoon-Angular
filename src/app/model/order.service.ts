@@ -8,6 +8,7 @@ import { ModelModule } from "./model.module";
 })
 export class OrderService {
 
+    public id?:number
     public cart:Cart;
     public name?:string;
     public surname?:string;

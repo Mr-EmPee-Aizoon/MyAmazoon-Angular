@@ -13,6 +13,16 @@ export class Cart {
 
     }
 
+    static fromJson(json:Cart) {
+        let cart = new Cart(json.cartToken);
+
+        cart.items = json.items;
+        cart.totalPrice = json.totalPrice;
+        cart.totalProducts = json.totalProducts;
+
+        return cart;
+    }
+
     containsItem(prodID:number) {
         return this.items.find(
             (prod) => prod.id == prodID
@@ -25,6 +35,8 @@ export class Cart {
 
     reset() {
         this.items = [];
+        this.totalProducts = 0;
+        this.totalPrice = 0;
     }
 
     addProduct(product:Product) {
@@ -90,6 +102,10 @@ export class Cart {
 
     getItems() {
         return Array.from(this.items);
+    }
+
+    getTotalItems() {
+        return this.items.length;
     }
 
     getTotalProducts() {
