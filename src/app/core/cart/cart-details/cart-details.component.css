@@ -2,8 +2,9 @@
     display: flex;
     width: 100%;
 
-    min-height: 90vh;
+    min-height: 84vh;
 
+    align-items: center;
     justify-content: center;
     padding: 5%;
 }

@@ -2,8 +2,25 @@
     display: flex;
     width: 100%;
 
-    min-height: 90vh;
+    min-height: 84vh;
 
+    align-items: center;
     justify-content: center;
     padding: 5%;
+}
+
+input.ng-invalid {
+    border: 1px solid red;
+}
+
+input.ng-invalid:focus {
+    box-shadow: 0 0 0.2rem rgba(255, 0, 0, 0.25)
+}
+
+input.ng-valid {
+    border: 1px solid green;
+}
+
+input.ng-valid:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 255, 4, 0.25);
 }

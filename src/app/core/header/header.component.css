@@ -68,3 +68,9 @@ header {
     color: #000;
     background-color: rgb(74, 132, 73);
 }
+
+nav {
+    height: 6vh;
+
+    background-color: #c7e0bc;
+}

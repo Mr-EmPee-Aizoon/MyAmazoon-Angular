@@ -5,7 +5,6 @@
 
         <div class="p-5">
             <form *ngIf="!sent" #form="ngForm" (ngSubmit)="sendOrder(form)">
-                {{ order | json }}
                 <div class="row">
                     <div class="form-group col-6">
                         <label for="name">Name</label>
