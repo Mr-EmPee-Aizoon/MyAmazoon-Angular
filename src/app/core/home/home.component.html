@@ -2,10 +2,10 @@
 <main>
     <aside>
         <ul>
-        <li>
-            <span class="active" (click)="refreshProductsList()">Tutte le categorie</span>
+        <li> <!-- TODO Cache category! -->
+            <span class="active" (click)="selectedCategory = ''">Tutte le categorie</span>
             <ul>
-                <li *ngFor="let category of categories" (click)="refreshProductsList(category)"><span>{{ category }}</span></li>
+                <li *ngFor="let category of categories" (click)="selectedCategory = category"><span>{{ category }}</span></li>
             </ul>
         </li>
         </ul>

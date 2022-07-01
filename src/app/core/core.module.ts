@@ -24,6 +24,9 @@ import { FormsModule } from '@angular/forms';
     ModelModule,
     FormsModule,
     RouterModule
+  ],
+  exports: [
+    HeaderComponent
   ]
 })
 export class CoreModule { }

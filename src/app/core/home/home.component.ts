@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Cart } from 'src/app/model/cart/cart';
 import { CartManagerService } from 'src/app/model/cart/cart-manager.service';
@@ -10,7 +11,15 @@ import { ProductRepositoryService } from 'src/app/model/repo/product-repository.
 })
 export class HomeComponent {
 
-  public products = this.productRepo.getProducts();
+  public selectedCategory = "";
+
+  get products() {
+    if(this.selectedCategory == "") {
+      return this.productRepo.getProducts();
+    } else {
+      return this.productRepo.getProductsByCategory(this.selectedCategory);
+    }
+  }
 
   private cart:Cart;
 
@@ -19,14 +28,6 @@ export class HomeComponent {
     cartManager:CartManagerService
   ) {
     this.cart = cartManager.getCart("default")
-  }
-
-  refreshProductsList(category?:string) {
-    if(category == undefined) {
-      this.products = this.productRepo.getProducts();
-    } else {
-      this.products = this.productRepo.getProductsByCategory(category);
-    }
   }
 
   get categories() {

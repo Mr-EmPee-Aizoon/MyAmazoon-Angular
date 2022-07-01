@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<div class="login-container">
+    <div class="form-container">
+        <h1 style="font-variant: small-caps;">Login</h1>
+        <form [formGroup]="form" (ngSubmit)="sendLoginRequest()">
+            <div class="row">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control w-100" id="name" formControlName="username" aria-describedby="nameHelp" placeholder="Enter your username">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="username">Password</label>
+                    <input type="password" class="form-control" id="password" formControlName="password" aria-describedby="nameHelp" placeholder="Enter your password">
+                    <small class="ml-1">
+                        <a href="#">? Recover your password</a>
+                    </small>
+                </div>
+            </div>
+            <div class="row">
+                <button class="w-100 btn btn-success">Login</button>
+            </div>
+        </form>
+
+    </div>
+</div>

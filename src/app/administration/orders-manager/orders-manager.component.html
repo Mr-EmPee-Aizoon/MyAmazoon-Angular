@@ -1,0 +1,67 @@
+<table class="table bg-light">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col" class="col-1">ID</th>
+            <th scope="col" class="col-2">Name</th>
+            <th scope="col" class="col-2">Surname</th>
+            <th scope="col" class="col-1">City</th>
+            <th scope="col" class="col-3">Address</th>
+            <th scope="col" class="col-2"></th>
+            <th scope="col" class="col-1"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let order of orders"><td colspan="7">
+            <table class="table table-striped">
+                <tr>
+                    <td class="col-1">{{ order.id }}</td>
+                    <td class="col-2">{{ order.name }}</td>
+                    <td class="col-2">{{ order.surname }}</td>
+                    <td class="col-1">{{ order.city }}</td>
+                    <td class="col-3">{{ order.address }}</td>
+                    <td class="col-2">
+                        <button class="btn btn-success" (click)="cart.style.display = cart.style.display == 'none'? '' : 'none'">Show cart</button>
+                    </td>
+                    <td class="col-1">
+                        <button class="btn btn-danger" (click)="removeOrder(order.id)">Remove</button>
+                    </td>
+                </tr>
+                <tr #cart style="display: none;"><td colspan="7">
+                    <table class="table bg-light">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" class="col-2">Quantity</th>
+                                <th scope="col" class="col-6">Product</th>
+                                <th scope="col" class="col-2">Price</th>
+                                <th scope="col" class="col-2">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of order.cart.getItems()">
+                                <td>{{ item.quantity }}</td>
+                                <td>{{ item.title }}</td>
+                                <td>{{ item.price | currency:'EUR' }}</td>
+                                <td>{{ item.price * item.quantity | currency:'EUR' }}</td>
+                            </tr>
+        
+                            <br><br>
+                            
+                            <tr>
+                                <td class="text-right font-weight-bold" colspan="3">Totale:</td>
+                                <td colspan="2">{{ order.cart.getTotalPrice()| currency:'EUR' }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right font-weight-bold" colspan="3">Numero prodotti:</td>
+                                <td colspan="2">{{ order.cart.getTotalProducts() }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right font-weight-bold" colspan="3">Numero articoli:</td>
+                                <td colspan="2">{{ order.cart.getTotalItems() }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td></tr>
+            </table>
+        </td></tr>
+    </tbody>
+</table>

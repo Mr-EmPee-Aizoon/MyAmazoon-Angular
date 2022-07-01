@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Cart } from 'src/app/model/cart/cart';
-import { CartManagerService } from 'src/app/model/cart/cart-manager.service';
 import { OrderService } from 'src/app/model/order.service';
+import { OrderRepositoryService } from 'src/app/model/repo/order-repository.service';
 
 @Component({
   selector: 'app-checkout',
@@ -16,14 +16,20 @@ export class CheckoutComponent {
 
   constructor(
     public order:OrderService,
+    private orderRepository:OrderRepositoryService
   ) {
     this.cart = order.cart;
   }
 
   sendOrder(form:NgForm) {
     if(form.valid && !this.sent) {
-      this.cart.reset();
-      this.sent = true;
+      this.orderRepository.saveOrder(this.order).subscribe(
+        (response) => {
+          this.cart.reset();
+          this.order.reset();
+          this.sent = true;
+        }
+      );
     }
   }
 

@@ -1,0 +1,57 @@
+main {
+    display: flex;
+
+    width: 100%;
+    min-height: 84vh;
+
+    box-sizing: border-box;
+    padding-top: 5vh;
+
+}
+
+aside {
+    position: fixed;
+    width: 3em;
+
+    border-top-right-radius: 2em;
+    border-bottom-right-radius: 2em;
+
+    margin-bottom: 5vh;
+
+    font-size: 2em;
+
+    color: rgb(75, 83, 73);
+    background-color: #c7e0bc;
+}
+
+aside ul {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+
+    justify-content: space-around;
+
+    padding: 1em;
+    list-style-type: none;
+}
+
+aside ul li:hover {
+    cursor: pointer;
+    color: rgb(86, 118, 79);
+}
+
+section {
+    width: 100%;
+    min-height: 100%;
+
+    padding: 2em;
+
+    margin-right: 2em;
+    margin-left: 8rem;
+
+    border-top-right-radius: 2em;
+    border-top-left-radius: 2em;
+
+    background-color: white;
+}

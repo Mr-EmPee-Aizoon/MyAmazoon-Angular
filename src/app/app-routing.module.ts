@@ -9,6 +9,11 @@ const routes: Routes = [
   {path: "home", component: HomeComponent},
   {path: "cart", component: CartDetailsComponent},
   {path: "checkout", component: CheckoutComponent},
+
+  {path: "administration",
+    loadChildren: () => import("./administration/administration.module").then( (m) => m.AdministrationModule)
+  },
+
   {path: "**", redirectTo: "/home"}
 
 ];
