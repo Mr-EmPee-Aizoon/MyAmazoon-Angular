@@ -11,7 +11,7 @@ import { StaticDatasourceService } from './static-datasource.service';
 export class OrderRepositoryService {
 
   constructor(
-    private dataSoure:RestDatasourceService,
+    private dataSoure:StaticDatasourceService,
   ) { }
 
   saveOrder(order:OrderService) {

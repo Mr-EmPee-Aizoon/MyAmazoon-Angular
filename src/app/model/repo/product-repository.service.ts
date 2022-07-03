@@ -13,7 +13,7 @@ export class ProductRepositoryService {
   private products:Product[] = [];
   private categories:string[] = [];
 
-  constructor(private dataSource:RestDatasourceService ) {
+  constructor(private dataSource:StaticDatasourceService ) {
     dataSource.getProducts().subscribe(
       (data) => {
         this.products = data;
